@@ -16,8 +16,14 @@ def directory_confirm():
 		if continue_or_not.lower() == 'y':
 			main_dir = main_dir.replace('"', '')
 			break
-		else:
+		
+		elif continue_or_not.lower() == 'n':
+			print("\n\tSure, please try again.")
 			directory_confirm()
+   
+		else:
+			print("\n\tIncorrect input. Please try again.")
+			continue
 
 	return main_dir
 
@@ -33,8 +39,14 @@ def pattern_confirm():
 		if continue_or_not.lower() == 'y':
 			pattern = pattern.replace('"', '')
 			break
-		else:
+		
+		elif continue_or_not.lower() == 'n':
+			print("\n\tSure, please try again.")		
 			pattern_confirm()
+   
+		else:
+			print("\n\tIncorrect input. Please try again.")
+			continue
 
 	return pattern
 
@@ -59,22 +71,23 @@ if __name__ == '__main__':
 
 	while play:
 
-		clear_screen()
 		main_dir = directory_confirm()
 		pattern = pattern_confirm()
 
+		clear_screen()
 		find_pattern(main_dir, pattern)
 
 		while True:
 			again = input("\nDo you want to try another pattern? Press 'Y' or 'N' accordingly.")
 
 			if again.lower() not in ['y', 'n']:
-				print("\nIncorrect input. Pleas try again.")
+				print("\n\tIncorrect input. Please try again.")
 				continue
 
 			elif again.lower() == 'y':
 				play = True
-				print("Starting again!")
+				print("\nStarting again!")
+				clear_screen()
 				break
 
 			elif again.lower() == 'n':
